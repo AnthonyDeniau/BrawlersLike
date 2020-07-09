@@ -9,16 +9,16 @@ class BrawlerType(DjangoObjectType):
     class Meta:
         model = Brawler
 
-    def resolve_rarity_text(self, context):
+    def resolve_rarity_text(self, id):
         return str(self.rarity)
 
 
 class Query(graphene.ObjectType):
-    brawler = graphene.Field(BrawlerType,
-                             id=graphene.Int(),
-                             name=graphene.String(),
-                             description=graphene.String(),
-                             cost=graphene.Float())
+    brawler = graphene.Field(
+        BrawlerType,
+        id=graphene.Int(),
+        name=graphene.String(),
+    )
     brawlers = graphene.List(BrawlerType)
 
     def resolve_brawler(self, context, id=None, name=None):
