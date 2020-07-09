@@ -1,4 +1,5 @@
 from django.db import models
+from .model import Brawler
 
 # Create your models here.
 class Ability(models.Model):
@@ -9,7 +10,7 @@ class Ability(models.Model):
     image = models.URLField(),
     reloadSpeed = models.DecimalField(),
     attackSpeed = models.DecimalField(),
-    projectilPattern = models.ForeignKey(models.projectilPattern, on_delete=models.PROTECT)
+    projectilPattern = models.ForeignKey(models.ProjectilPattern, on_delete=models.PROTECT)
     
     def __str__(self):
         return self.name
