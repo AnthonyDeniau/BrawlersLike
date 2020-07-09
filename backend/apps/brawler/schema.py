@@ -62,5 +62,52 @@ class CreateBrawlerMutation(graphene.Mutation):
         return CreateBrawlerMutation(brawler=brawler, ok=True)
 
 
+class UpdateBrawlerMutation(graphene.Mutation):
+    class Arguments:
+        # The input arguments for this mutation
+        id = graphene.ID(required=True)
+        name = graphene.String(required=False)
+        cost = graphene.Int(required=False)
+        description = graphene.String(required=False)
+        avatar = graphene.String(required=False)
+        rarity = graphene.String(required=False)
+        health = graphene.Int(required=False)
+        speed = graphene.Int(required=False)
+
+    # The class attributes define the response of the mutation
+    brawler = graphene.Field(BrawlerType)
+
+    def mutate(self,
+               info,
+               id,
+               name=None,
+               cost=None,
+               description=None,
+               avatar=None,
+               rarity=None,
+               health=None,
+               speed=None):
+        brawler = Brawler.objects.get(pk=id)
+        if name:
+            brawler.name = name
+        if cost:
+            brawler.cost = cost
+        if description:
+            brawler.description = description
+        if avatar:
+            brawler.avatar = avatar
+        if health:
+            brawler.health = health
+        if speed:
+            brawler.speed = speed
+        if rarity:
+            brawler.rarity = rarity
+
+        brawler.save()
+        # Notice we return an instance of this mutation
+        return UpdateBrawlerMutation(brawler=brawler)
+
+
 class Mutation(graphene.ObjectType):
     create_brawler = CreateBrawlerMutation.Field()
+    update_brawler = UpdateBrawlerMutation.Field()
