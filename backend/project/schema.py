@@ -8,8 +8,8 @@ class Query(brawler_schema.Query, userprofile_schema.Query,
     pass
 
 
-class Mutation(brawler_schema.Mutation, graphene.ObjectType):
+class Mutation(projectil_schema.Mutations, graphene.ObjectType):
     pass
 
 
-schema = graphene.Schema(query=Query, mutation=ProjectilMutations)
+schema = graphene.Schema(query=Query, mutation=Mutations)

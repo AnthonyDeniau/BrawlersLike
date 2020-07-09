@@ -62,7 +62,7 @@ class DeleteProjectil(graphene.Mutation):
         ok = True
         return DeleteProjectil(person=projectil, ok=ok)
 
-class ProjectilMutations(graphene.ObjectType):
+class Mutations(graphene.ObjectType):
     create_projectil = CreateProjectil.Field()
     update_projectil = UpdateProjectil.Field()  
     delete_projectil = DeleteProjectil.Field()
