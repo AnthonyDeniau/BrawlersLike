@@ -26,7 +26,7 @@ class CreateProjectil(graphene.Mutation):
             speed=speed,
             hitboxSize=hitboxSize,
             damage=damage,
-            range=range)   
+            range=range)
         ok = True
         return CreateProjectil(person=projectil, ok=ok)
 
