@@ -14,14 +14,11 @@ class Query(graphene.ObjectType):
                              name=graphene.String(),
                              description=graphene.String(),
                              cost=graphene.Float())
-    ability = graphene.List(Ability)
+    abilitys = graphene.List(Ability)
 
-    def resolve_brawler(self, context, id=None, name=None):
+    def resolve_ability(self, context, id=None):
         if id is not None:
             return Ability.objects.get(pk=id)
-
-        if name is not None:
-            return Ability.objects.get(name=name)
 
         return None
 
