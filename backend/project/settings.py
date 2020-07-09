@@ -41,10 +41,6 @@ INSTALLED_APPS = [
     'apps.userprofile',
     'apps.userprofilebrawler',
     'apps.equipment',
-    'django.contrib.admin', 'django.contrib.auth',
-    'django.contrib.contenttypes', 'django.contrib.sessions',
-    'django.contrib.messages', 'django.contrib.staticfiles', 'apps.brawler',
-    'graphene_django',
     'apps.ability', 'apps.projectil', 'apps.projectilPattern'
 ]
 
