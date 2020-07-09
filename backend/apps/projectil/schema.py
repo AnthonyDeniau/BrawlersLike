@@ -89,5 +89,3 @@ class Query(graphene.ObjectType):
 
     def resolve_projectils(self, context):
         return Projectil.objects.all()
-
-schema = graphene.Schema(query=Query, mutation=ProjectilMutations)
