@@ -1,7 +1,7 @@
 from django.db import models
 from apps.brawler.models import Brawler
-from apps.equipments.models import Equipment
-from apps.abilities.models import Abilitie
+from apps.equipment.models import Equipment
+from apps.ability.models import Ability
 
 
 # Create your models here.
@@ -10,7 +10,7 @@ class UserProfileBrawler(models.Model):
     level = models.IntegerField()
     power_points = models.IntegerField()
     equipments = models.ManyToManyField(Equipment)
-    abilities = models.ManyToManyField(Abilitie)
+    abilities = models.ManyToManyField(Ability)
 
 
     def __str__(self):
