@@ -42,20 +42,30 @@ class UpdateProjectil(graphene.Mutation):
     ok = graphene.Boolean()
     projectil = graphene.Field(lambda: Projectil)
 
-    def mutate(root, info, name, sprite, hitboxSize, damage, range):
-        projectil = Projectil(
-            name=name, 
-            sprite=graphene.String(),
-            speed=graphene.Decimal(),
-            hitboxSize=graphene.Decimal(),
-            damage=graphene.Int(),
-            range=graphene.Decimal())
+    def mutate(root, info, **kwargs):
+        projectil = Projectil.objects.get(pk=kwargs['id'])
+        for k, v in kwargs.items():
+            projectil.k = v
+        projectil.save()
         ok = True
         return UpdateProjectil(person=projectil, ok=ok)
 
+class DeleteProjectil(graphene.Mutation):
+    class Arguments:
+        id=graphene.ID()
+
+    ok = graphene.Boolean()
+
+    def mutate(root, info, id):
+        projectil = Projectil.objects.get(pk=id)
+        projectil.delete()
+        ok = True
+        return DeleteProjectil(person=projectil, ok=ok)
+
 class ProjectilMutations(graphene.ObjectType):
     create_projectil = CreateProjectil.Field()
-    update_projectil = UpdateProjectil.Field()
+    update_projectil = UpdateProjectil.Field()  
+    delete_projectil = DeleteProjectil.Field()
 
 
 class Query(graphene.ObjectType):
@@ -67,9 +77,6 @@ class Query(graphene.ObjectType):
                              damage=graphene.Int(),
                              range=graphene.Decimal())
     projectils = graphene.List(ProjectilType)
-
-
-
 
     def resolve_projectil(self, context, id=None, name=None):
         if id is not None:
