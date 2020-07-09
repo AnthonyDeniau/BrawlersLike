@@ -9,7 +9,7 @@ class Query(brawler_schema.Query, userprofile_schema.Query,
     pass
 
 
-class Mutation(brawler_schema.Mutation, graphene.ObjectType):
+class Mutation(brawler_schema.Mutation, userprofile_schema.Mutation, graphene.ObjectType):
     pass
 
 
