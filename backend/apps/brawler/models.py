@@ -13,7 +13,7 @@ class Rarity(enum.Enum):
 
 
 class Brawler(models.Model):
-    name = models.CharField(max_length=125)
+    name = models.CharField(max_length=125, unique=True)
     cost = models.IntegerField()
     description = models.TextField(max_length=255)
     avatar = models.URLField()
