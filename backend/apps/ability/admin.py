@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import ability
+from .models import Ability
 
-admin.site.register(ability)
+admin.site.register(Ability)
