@@ -30,17 +30,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'apps.brawler',
+    'django.contrib.admin', 'django.contrib.auth',
+    'django.contrib.contenttypes', 'django.contrib.sessions',
+    'django.contrib.messages', 'django.contrib.staticfiles', 'apps.brawler',
     'graphene_django',
-    'apps.userprofile',
-    'apps.userprofilebrawler',
-    'apps.equipment',
+    'apps.ability', 'apps.projectil', 'apps.projectilPattern'
 ]
 
 MIDDLEWARE = [
