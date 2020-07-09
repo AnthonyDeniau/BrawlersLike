@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class Brawler(models.Model):
+class ProjectilPattern(models.Model):
     number = models.IntegerField()
     interval = models.DurationField()
     spreadAngle = models.DecimalField()
