@@ -9,12 +9,12 @@ class AbilityType(DjangoObjectType):
 
 
 class Query(graphene.ObjectType):
-    ability = graphene.Field(Ability,
+    ability = graphene.Field(AbilityType,
                              id=graphene.Int(),
                              name=graphene.String(),
                              description=graphene.String(),
                              cost=graphene.Float())
-    abilitys = graphene.List(Ability)
+    abilitys = graphene.List(AbilityType)
 
     def resolve_ability(self, context, id=None):
         if id is not None:
