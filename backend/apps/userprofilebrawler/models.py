@@ -4,7 +4,7 @@ from apps.brawler.models import Brawler
 # Create your models here.
 
 class UserProfileBrawler(models.Model):
-    brawler = models.ForeignKey(Brawler)
+    brawler = models.ForeignKey(Brawler, on_delete=models.CASCADE)
     level = models.IntegerField()
     power_points = models.IntegerField()
     equipments = models.ManyToManyField()
