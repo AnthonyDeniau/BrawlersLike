@@ -1,10 +1,10 @@
 from django.db import models
-from brawler.models import Brawler
+from apps.brawler.models import Brawler
 
 
 # Create your models here.
 class UserProfile(models.Model):
-    selected_brawler = models.ForeignKey(Brawler)
+    selected_brawler = models.ForeignKey(Brawler, on_delete=models.CASCADE)
     coins = models.IntegerField()
     trophy = models.IntegerField()
     gems = models.IntegerField()
