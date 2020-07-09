@@ -7,5 +7,4 @@ class ProjectilPattern(models.Model):
     spreadAngle = models.DecimalField(decimal_places=10,max_digits=12)
     range = models.DecimalField(decimal_places=10,max_digits=12)
 
-    def __str__(self):
-        return self.number
+    
