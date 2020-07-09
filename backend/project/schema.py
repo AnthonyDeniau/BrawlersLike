@@ -14,4 +14,4 @@ class Mutation(brawler_schema.Mutation, equipment_schema.Mutation, graphene.Obje
     pass
 
 
-schema = graphene.Schema(query=Query, mutation=Mutation)
+schema = graphene.Schema(query=Query, mutation=ProjectilMutations)
