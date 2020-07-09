@@ -53,9 +53,22 @@ class UpdateProjectil(graphene.Mutation):
         ok = True
         return UpdateProjectil(person=projectil, ok=ok)
 
+class DeleteProjectil(graphene.Mutation):
+    class Arguments:
+        id=graphene.ID()
+
+    ok = graphene.Boolean()
+
+    def mutate(root, info, id):
+        projectil = Projectil.objects.get(pk=id)
+        projectil.delete()
+        ok = True
+        return DeleteProjectil(person=projectil, ok=ok)
+
 class ProjectilMutations(graphene.ObjectType):
     create_projectil = CreateProjectil.Field()
     update_projectil = UpdateProjectil.Field()
+    delete_projectil = DeleteProjectil.Field()
 
 
 class Query(graphene.ObjectType):
