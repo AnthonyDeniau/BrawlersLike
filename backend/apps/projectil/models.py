@@ -2,7 +2,7 @@ from django.db import models
 
 class Projectil(models.Model):
     name = models.CharField(max_length=125)
-    sprite = models.ImageField()
+    sprite = models.URLField()
     speed = models.DecimalField()
     hitboxSize = models.DecimalField()
     damage = models.IntegerField()
