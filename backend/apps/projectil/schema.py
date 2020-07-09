@@ -9,14 +9,14 @@ class ProjectilType(DjangoObjectType):
 
 
 class Query(graphene.ObjectType):
-    brawler = graphene.Field(ProjectilType,
+    projectil = graphene.Field(ProjectilType,
                              id=graphene.Int(),
                              name=graphene.String(),
                              description=graphene.String(),
                              cost=graphene.Float())
-    brawlers = graphene.List(ProjectilType)
+    projectils = graphene.List(ProjectilType)
 
-    def resolve_brawler(self, context, id=None, name=None):
+    def resolve_projectil(self, context, id=None, name=None):
         if id is not None:
             return Projectil.objects.get(pk=id)
 
@@ -25,5 +25,5 @@ class Query(graphene.ObjectType):
 
         return None
 
-    def resolve_brawlers(self, context):
+    def resolve_projectils(self, context):
         return Projectil.objects.all()
