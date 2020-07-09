@@ -19,14 +19,14 @@ class CreateProjectil(graphene.Mutation):
     ok = graphene.Boolean()
     projectil = graphene.Field(lambda: Projectil)
 
-    def mutate(root, info, name, sprite, hitboxSize, damage, range):
-        projectil = Projectil(
+    def mutate(root, info, name, sprite, speed, hitboxSize, damage, range):
+        projectil = Projectil.objects.create(
             name=name, 
-            sprite=graphene.String(),
-            speed=graphene.Decimal(),
-            hitboxSize=graphene.Decimal(),
-            damage=graphene.Int(),
-            range=graphene.Decimal())
+            sprite=sprite,
+            speed=speed,
+            hitboxSize=hitboxSize,
+            damage=damage,
+            range=range)   
         ok = True
         return CreateProjectil(person=projectil, ok=ok)
 
