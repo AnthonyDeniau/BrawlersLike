@@ -19,14 +19,16 @@ class CreateAbility(graphene.Mutation):
     ok = graphene.Boolean()
     ability = graphene.Field(lambda: Ability)
 
-    def mutate(root, info, name, sprite, hitboxSize, damage, range):
+    def Mutations(root, info, brawler,isSuper,name, description, reloadSpeed, attackSpeed, projectilPattern):
         ability = Ability(
+            brawler=brawler,
+            isSuper=isSuper,
             name=name, 
-            sprite=graphene.String(),
-            speed=graphene.Decimal(),
-            hitboxSize=graphene.Decimal(),
-            damage=graphene.Int(),
-            range=graphene.Decimal())
+            description=graphene.String(),
+            image=graphene.String(),
+            reloadSpeed=graphene.Decimal(),
+            attackSpeed=graphene.Decimal(),
+            projectilPattern=projectilPattern())
         ok = True
         return CreateAbility(person=ability, ok=ok)
 
