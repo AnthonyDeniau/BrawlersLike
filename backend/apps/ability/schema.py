@@ -11,14 +11,15 @@ class AbilityType(DjangoObjectType):
 class Query(graphene.ObjectType):
     ability = graphene.Field(AbilityType,
                              id=graphene.Int(),
-                             name=graphene.String(),
-                             description=graphene.String(),
-                             cost=graphene.Float())
+                             name=graphene.String())
     abilitys = graphene.List(AbilityType)
 
-    def resolve_ability(self, context, id=None):
+    def resolve_ability(self, context, id=None, name=None):
         if id is not None:
             return Ability.objects.get(pk=id)
+
+        if name is not None:
+            return Brawler.objects.get(name=name)
 
         return None
 
