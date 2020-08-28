@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'apps.userprofile',
     'apps.userprofilebrawler',
     'apps.equipment',
+    'apps.skin',
     'apps.ability', 'apps.projectil', 'apps.projectilPattern'
 ]
 
