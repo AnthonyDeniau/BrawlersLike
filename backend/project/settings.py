@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'apps.userprofile',
     'apps.userprofilebrawler',
     'apps.equipment',
-    'apps.ability', 'apps.projectil', 'apps.projectilPattern'
+    'apps.ability', 'apps.projectil', 'apps.projectilPattern',
+    'apps.skin'
 ]
 
 MIDDLEWARE = [

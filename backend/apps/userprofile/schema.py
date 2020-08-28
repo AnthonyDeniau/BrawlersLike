@@ -25,7 +25,7 @@ class Query(graphene.ObjectType):
         return None
 
     def resolve_user_profiles(self, context):
-        return UserProfile.objects.all()
+        return skin.objects.all()
 
 
 ## query allprofile{
