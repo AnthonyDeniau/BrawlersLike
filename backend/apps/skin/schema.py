@@ -51,38 +51,45 @@ class CreateSkinMutation(graphene.Mutation):
         return CreateSkinMutation(skin=skin, ok=True)
 
 
-class UpdateSkin(graphene.Mutation):
+class UpdateSkinMutation(graphene.Mutation):
     class Arguments:
+        id =            graphene.Int(required=True)
         name =          graphene.String(required=True)
         description =   graphene.String(required=True)
         avatar =        graphene.String(required=True)
-        price =         graphene.Int()
+        price =         graphene.Int(required=True)
         model_file =    graphene.String(required=True)
         texture_file =  graphene.String(required=True)
         voice_line_file = graphene.String(required=True)
 
     ok = graphene.Boolean()
-    skin = graphene.Field(lambda: Skin)
+    skin = graphene.Field(SkinType)
 
     def mutate(root, info, **kwargs):
-        pass
+        skin = Skin.objects.get(pk=kwargs['id'])
+        for k, v in kwargs.items():
+            skin.k = v
+        skin.save()
+        ok = True
+        return UpdateSkinMutation(skin=skin, ok=ok)
 
 
-class DeleteSkin(graphene.Mutation):
+class DeleteSkinMutation(graphene.Mutation):
     class Arguments:
         id=graphene.ID()
 
     ok = graphene.Boolean()
+    skin = graphene.Field(SkinType)
 
     def mutate(root, info, id):
-        ability = Ability.objects.get(pk=id)
-        ability.delete()
+        skin = Skin.objects.get(pk=id)
+        skin.delete()
         ok = True
-        return DeleteAbility(person=ability, ok=ok)
+        return DeleteSkinMutation(skin=skin, ok=ok)
 
 
 class Mutation(graphene.ObjectType):
     create_skin = CreateSkinMutation.Field()
-    #update_skin = UpdateSkinMutation.Field()
-    #delete_skin = DeleteSkinMutation.Field()
+    update_skin = UpdateSkinMutation.Field()
+    delete_skin = DeleteSkinMutation.Field()
 
