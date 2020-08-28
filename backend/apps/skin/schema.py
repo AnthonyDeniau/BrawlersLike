@@ -68,8 +68,10 @@ class UpdateSkinMutation(graphene.Mutation):
     def mutate(root, info, **kwargs):
         skin = Skin.objects.get(pk=kwargs['id'])
         for k, v in kwargs.items():
-            skin.k = v
+            if(k != "id"): 
+                setattr(skin, k, v)
         skin.save()
+
         ok = True
         return UpdateSkinMutation(skin=skin, ok=ok)
 
@@ -93,3 +95,76 @@ class Mutation(graphene.ObjectType):
     update_skin = UpdateSkinMutation.Field()
     delete_skin = DeleteSkinMutation.Field()
 
+
+"""
+
+query oneSkin {
+  skin(id:1){
+    id,
+    name,
+		description,
+		avatar,
+		price,
+		modelFile,
+		textureFile,
+		voiceLineFile
+  }
+}
+
+query allskins{
+  skins {
+    id,
+    name,
+		description,
+		avatar,
+		price,
+		modelFile,
+		textureFile,
+		voiceLineFile
+  }
+}
+
+mutation createSkin {
+  createSkin(
+    name:"BlueJack", 
+    description:"Un skin tout bleu comme Jack LeBleu", 
+    avatar:"http://bleuavatar.fr",            
+    price:800, 
+    modelFile:"http://bleumodel.fr",  
+    textureFile:"http://bleutexture.fr",
+    voiceLineFile:"http://bleuvoiceline.fr"
+  )
+  {
+    ok
+    skin {
+      id
+    }
+  }
+}
+
+mutation updateSkin {
+  updateSkin(
+    id:9,
+    name:"Blue_Jack", 
+    description:"Un skin tout bleu comme Jack Blue", 
+    avatar:"http://bleuavatar.com",            
+    price:900, 
+    modelFile:"http://bleumodel.com",  
+    textureFile:"http://bleutexture.com",
+    voiceLineFile:"http://bleuvoiceline.com"
+  )
+  {
+    ok
+    skin {
+      id
+    }
+  }
+}
+
+mutation deleteSkin {
+  deleteSkin(id:9) {
+    ok
+  }
+}
+
+"""
