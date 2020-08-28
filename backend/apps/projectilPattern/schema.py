@@ -4,35 +4,40 @@ from .models import ProjectilPattern
 
 
 class ProjectilPatternType(DjangoObjectType):
+    def resolve_interval(self, info):
+        return self.interval.total_seconds()
+
     class Meta:
         model = ProjectilPattern
 
+
 class CreateProjectilPattern(graphene.Mutation):
     class Arguments:
-    
-        number=graphene.Int()
-        interval=graphene.Int()
-        spreadAngle=graphene.Decimal()
-        range=graphene.Decimal()
-        
+
+        number = graphene.Int()
+        interval = graphene.Int()
+        spreadAngle = graphene.Decimal()
+        range = graphene.Decimal()
+
     ok = graphene.Boolean()
     projectilPattern = graphene.Field(lambda: ProjectilPattern)
 
     def mutate(root, info, number, interval, spreadAngle, range):
         projectilPattern = ProjectilPattern.objects.create(
-            number=number, 
+            number=number,
             interval=interval,
             spreadAngle=spreadAngle,
-            range=range)   
+            range=range)
         ok = True
         return CreateProjectilPattern(person=projectilPattern, ok=ok)
 
+
 class UpdateProjectilPattern(graphene.Mutation):
     class Arguments:
-        number=graphene.Int()
-        interval=graphene.Int()
-        spreadAngle=graphene.Decimal()
-        range=graphene.Decimal()
+        number = graphene.Int()
+        interval = graphene.Int()
+        spreadAngle = graphene.Decimal()
+        range = graphene.Decimal()
 
     ok = graphene.Boolean()
     projectilPattern = graphene.Field(lambda: ProjectilPattern)
@@ -45,9 +50,10 @@ class UpdateProjectilPattern(graphene.Mutation):
         ok = True
         return UpdateProjectilPattern(person=projectilPattern, ok=ok)
 
+
 class DeleteProjectilPattern(graphene.Mutation):
     class Arguments:
-        id=graphene.ID()
+        id = graphene.ID()
 
     ok = graphene.Boolean()
 
@@ -57,28 +63,20 @@ class DeleteProjectilPattern(graphene.Mutation):
         ok = True
         return DeleteProjectilPattern(person=projectilPattern, ok=ok)
 
+
 class Mutations(graphene.ObjectType):
     create_projectilPattern = CreateProjectilPattern.Field()
-    update_projectilPattern = UpdateProjectilPattern.Field()  
+    update_projectilPattern = UpdateProjectilPattern.Field()
     delete_projectilPattern = DeleteProjectilPattern.Field()
 
 
 class Query(graphene.ObjectType):
-    projectilPattern = graphene.Field(ProjectilPatternType,
-                             id=graphene.Int(),
-                             number=graphene.Int()
-                             interval=graphene.Int()
-                             spreadAngle=graphene.Decimal()
-                             range=graphene.Decimal())
+    projectilPattern = graphene.Field(ProjectilPatternType, id=graphene.Int())
     projectilPatterns = graphene.List(ProjectilPatternType)
 
-    def resolve_projectilPattern(self, context, id=None, name=None):
+    def resolve_projectilPattern(self, context, id=None):
         if id is not None:
             return ProjectilPattern.objects.get(pk=id)
-
-        if name is not None:
-            return ProjectilPattern.objects.get(name=name)
-
         return None
 
     def resolve_projectilPatterns(self, context):
