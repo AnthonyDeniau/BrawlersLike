@@ -18,7 +18,7 @@ class CreateUserProfileBrawlerMutation(graphene.Mutation):
         abilities = graphene.Int()
 
     ok = graphene.Boolean()
-    userProfileBrawler = graphene.Field(lambda: UserProfileBrawler)
+    userProfileBrawler = graphene.Field(UserProfileBrawlerType)
 
     def mutate(root, info, brawler, level, power_points, equipments, abilities):
         userProfileBrawler = UserProfileBrawler.objects.create(
@@ -41,7 +41,7 @@ class UpdateUserProfileBrawlerMutation(graphene.Mutation):
         abilities = graphene.Int()
 
     ok = graphene.Boolean()
-    userProfileBrawler = graphene.Field(lambda: UserProfileBrawler)
+    userProfileBrawler = graphene.Field(UserProfileBrawlerType)
 
     def mutate(root, info, id, **kwargs):
         userProfileBrawler = UserProfileBrawler.objects.get(pk=id)
