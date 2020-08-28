@@ -108,6 +108,23 @@ class UpdateBrawlerMutation(graphene.Mutation):
         return UpdateBrawlerMutation(brawler=brawler)
 
 
+class DeleteBrawlerMutation(graphene.Mutation):
+    class Arguments:
+        # The input arguments for this mutation
+        id = graphene.ID(required=True)
+        name = graphene.String(required=False)
+
+    # The class attributes define the response of the mutation
+    is_deleted = graphene.Boolean()
+
+    def mutate(self, info, id, name=None):
+        brawler = Brawler.objects.get(pk=id)
+        brawler.delete()
+        # Notice we return an instance of this mutation
+        return DeleteBrawlerMutation(is_deleted=True)
+
+
 class Mutation(graphene.ObjectType):
     create_brawler = CreateBrawlerMutation.Field()
     update_brawler = UpdateBrawlerMutation.Field()
+    delete_brawler = DeleteBrawlerMutation.Field()
