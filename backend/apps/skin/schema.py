@@ -51,28 +51,24 @@ class CreateSkinMutation(graphene.Mutation):
         return CreateSkinMutation(skin=skin, ok=True)
 
 
-class UpdateAbility(graphene.Mutation):
+class UpdateSkin(graphene.Mutation):
     class Arguments:
-        name=graphene.String()
-        sprite=graphene.String()
-        speed=graphene.Decimal()
-        hitboxSize=graphene.Decimal()
-        damage=graphene.Int()
-        range=graphene.Decimal()
+        name =          graphene.String(required=True)
+        description =   graphene.String(required=True)
+        avatar =        graphene.String(required=True)
+        price =         graphene.Int()
+        model_file =    graphene.String(required=True)
+        texture_file =  graphene.String(required=True)
+        voice_line_file = graphene.String(required=True)
 
     ok = graphene.Boolean()
-    ability = graphene.Field(lambda: Ability)
+    skin = graphene.Field(lambda: Skin)
 
     def mutate(root, info, **kwargs):
-        ability = Ability.objects.get(pk=kwargs['id'])
-        for k, v in kwargs.items():
-            ability.k = v
-        ability.save()
-        ok = True
-        return UpdateAbility(person=ability, ok=ok)
+        pass
 
 
-class DeleteAbility(graphene.Mutation):
+class DeleteSkin(graphene.Mutation):
     class Arguments:
         id=graphene.ID()
 
