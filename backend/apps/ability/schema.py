@@ -80,7 +80,7 @@ class Query(graphene.ObjectType):
             return Ability.objects.get(pk=id)
 
         if name is not None:
-            return Brawler.objects.get(name=name)
+            return Ability.objects.get(name=name)
 
         return None
 
