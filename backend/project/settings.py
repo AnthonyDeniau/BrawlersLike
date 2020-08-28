@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.messages', 'django.contrib.staticfiles', 'apps.brawler',
     'apps.userprofile', 'apps.userprofilebrawler', 'apps.equipment',
     'graphene_django', 'apps.ability', 'apps.projectil',
-    'apps.projectilPattern', 'corsheaders'
+    'apps.projectilPattern', 'corsheaders', 'apps.skin'
 ]
 
 MIDDLEWARE = [
