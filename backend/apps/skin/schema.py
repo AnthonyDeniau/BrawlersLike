@@ -37,6 +37,7 @@ class CreateSkin(graphene.Mutation):
 
 class UpdateSkin(graphene.Mutation):
     class Arguments:
+        id = graphene.ID()
         name = graphene.String()
         description = graphene.String()
         avatar = graphene.String()
@@ -55,7 +56,7 @@ class UpdateSkin(graphene.Mutation):
             skin.k = v
         skin.save()
         ok = True
-        return UpdateSkin(person=skin, ok=ok)
+        return UpdateSkin(skin=skin, ok=ok)
 
 
 class DeleteSkin(graphene.Mutation):
@@ -63,13 +64,14 @@ class DeleteSkin(graphene.Mutation):
         id = graphene.ID()
 
     ok = graphene.Boolean()
+    skin = graphene.Field(SkinType)
 
     @staticmethod
     def mutate(root, info, id):
         skin = Skin.objects.get(pk=id)
         skin.delete()
         ok = True
-        return DeleteSkin(person=skin, ok=ok)
+        return DeleteSkin(skin=skin, ok=ok)
 
 
 class Mutation(graphene.ObjectType):
