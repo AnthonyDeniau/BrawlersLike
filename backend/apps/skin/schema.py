@@ -84,17 +84,17 @@ class UpdateSkinMutation(graphene.Mutation):
         if name:
             skin.name = name
         if description:
-            skin.cost = description
+            skin.description = description
         if avatar:
             skin.avatar = avatar
         if price:
-            skin.health = price
+            skin.price = price
         if model_file:
-            skin.speed = model_file
+            skin.model_file = model_file
         if texture_file:
-            skin.rarity = texture_file
+            skin.texture_file = texture_file
         if voiceline_file:
-            skin.rarity = voiceline_file
+            skin.voiceline_file = voiceline_file
 
         skin.save()
         # Notice we return an instance of this mutation
