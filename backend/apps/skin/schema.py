@@ -13,13 +13,13 @@ class CreateSkin(graphene.Mutation):
         name = graphene.String()
         description = graphene.String()
         avatar = graphene.String()
-        price = graphene.Decimal()
+        price = graphene.Int()
         model_file = graphene.String()
         texture_file = graphene.String()
         voice_line_file = graphene.String()
 
     ok = graphene.Boolean()
-    skin = graphene.Field(lambda: Skin)
+    skin = graphene.Field(SkinType)
 
     @staticmethod
     def mutate(root, info, name, description, avatar, price, model_file,
@@ -32,7 +32,7 @@ class CreateSkin(graphene.Mutation):
                                    texture_file=texture_file,
                                    voice_line_file=voice_line_file)
         ok = True
-        return CreateSkin(person=skin, ok=ok)
+        return CreateSkin(skin=skin, ok=ok)
 
 
 class UpdateSkin(graphene.Mutation):
@@ -40,13 +40,13 @@ class UpdateSkin(graphene.Mutation):
         name = graphene.String()
         description = graphene.String()
         avatar = graphene.String()
-        price = graphene.Decimal()
+        price = graphene.Int()
         model_file = graphene.String()
         texture_file = graphene.String()
         voice_line_file = graphene.String()
 
     ok = graphene.Boolean()
-    skin = graphene.Field(lambda: Skin)
+    skin = graphene.Field(SkinType)
 
     @staticmethod
     def mutate(root, info, **kwargs):
@@ -72,7 +72,7 @@ class DeleteSkin(graphene.Mutation):
         return DeleteSkin(person=skin, ok=ok)
 
 
-class Mutations(graphene.ObjectType):
+class Mutation(graphene.ObjectType):
     create_skin = CreateSkin.Field()
     update_skin = UpdateSkin.Field()
     delete_skin = DeleteSkin.Field()
@@ -85,7 +85,7 @@ class Query(graphene.ObjectType):
         name=graphene.String(),
         description=graphene.String(),
         avatar=graphene.String(),
-        price=graphene.Decimal(),
+        price=graphene.Int(),
         model_file=graphene.String(),
         texture_file=graphene.String(),
         voice_line_file=graphene.String(),
