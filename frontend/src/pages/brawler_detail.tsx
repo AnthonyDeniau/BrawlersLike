@@ -40,7 +40,7 @@ const BrawlerDetailPage: React.SFC<BrawlerDetailPageProps> = () => {
           "radial-gradient(30.05% 140.89% at 50% 50%, #2AF5FF 0%, rgba(1, 71, 187, 0.92) 100%)",
       }}
     >
-      <Row>
+      <Row style={{ height: "100vh" }}>
         <Col
           span={8}
           style={{
@@ -58,8 +58,18 @@ const BrawlerDetailPage: React.SFC<BrawlerDetailPageProps> = () => {
             Choisir
           </Button>
         </Col>
-        <Col span={8}>
-          <img src={brawlerData?.data?.brawler.avatar} />
+        <Col
+          span={8}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <img
+            src={brawlerData?.data?.brawler.avatar}
+            style={{ height: "40%", width: "auto" }}
+          />
         </Col>
         <Col span={8}>
           Stats

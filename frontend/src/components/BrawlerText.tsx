@@ -2,13 +2,7 @@ import React, { FunctionComponent } from "react";
 import "./BrawlerText.css";
 
 export const BrawlerText: FunctionComponent = ({ children }) => {
-  return (
-    <svg>
-      <text className="brawler-text" x="0" y="100px">
-        {children}
-      </text>
-    </svg>
-  );
+  return <span className="brawler-text">{children}</span>;
 };
 
 type BrawlerTitleType = {

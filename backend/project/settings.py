@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.messages', 'django.contrib.staticfiles', 'apps.brawler',
     'apps.userprofile', 'apps.userprofilebrawler', 'apps.equipment',
     'graphene_django', 'apps.ability', 'apps.projectil',
-    'apps.projectilPattern', 'corsheaders'
+    'apps.projectilPattern'
 ]
 
 MIDDLEWARE = [
@@ -45,8 +45,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
 ]
 
 ROOT_URLCONF = 'project.urls'

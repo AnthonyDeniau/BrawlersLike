@@ -1,10 +1,9 @@
 .brawler-text {
   font-family: "lilita one";
-  fill: #9db0dd;
-  text-shadow: 0px 1px 0px #000000;
-  font-size: 11px;
-  stroke: "black";
-  stroke-width: 2;
+  color: #9db0dd;
+  text-shadow: 0px 2px 0px #000000, 0px -1px 0px #000000, 1px 0px 0px #000000,
+    -1px 0px 0px #000000;
+  font-size: 12px;
 }
 
 .brawler-title-1 {
