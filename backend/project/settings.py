@@ -30,18 +30,12 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'apps.brawler',
-    'apps.userprofile',
-    'apps.userprofilebrawler',
-    'apps.equipment',
-    'graphene_django',
-    'apps.ability', 'apps.projectil', 'apps.projectilPattern'
+    'django.contrib.admin', 'django.contrib.auth',
+    'django.contrib.contenttypes', 'django.contrib.sessions',
+    'django.contrib.messages', 'django.contrib.staticfiles', 'apps.brawler',
+    'apps.userprofile', 'apps.userprofilebrawler', 'apps.equipment',
+    'graphene_django', 'apps.ability', 'apps.projectil',
+    'apps.projectilPattern', 'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -52,6 +46,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -130,3 +125,6 @@ MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
 
 # GRAPHQL Settings
 GRAPHENE = {'SCHEMA': 'project.schema.schema'}
+
+# CORS Headers settings
+CORS_ORIGIN_ALLOW_ALL = True
