@@ -46,7 +46,7 @@ class UpdateProjectilPattern(graphene.Mutation):
         projectilPattern = ProjectilPattern.objects.get(pk=kwargs['id'])
         for k, v in kwargs.items():
             projectilPattern.k = v
-        projectil.save()
+        projectilPattern.save()
         ok = True
         return UpdateProjectilPattern(person=projectilPattern, ok=ok)
 
