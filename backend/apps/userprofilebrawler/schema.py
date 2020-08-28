@@ -11,6 +11,7 @@ class UserProfileBrawlerType(DjangoObjectType):
 
 class CreateUserProfileBrawlerMutation(graphene.Mutation):
     class Arguments:
+        name=graphene.String()
         brawler = graphene.Int()
         level = graphene.Int()
         power_points = graphene.Int()
@@ -21,7 +22,7 @@ class CreateUserProfileBrawlerMutation(graphene.Mutation):
     userProfileBrawler = graphene.Field(lambda: UserProfileBrawler)
 
     def mutate(root, info, brawler, level, power_points, equipments, abilities):
-        userProfileBrawler = UserProfileBrawler(
+        userProfileBrawler = UserProfileBrawler.objects.create(
             brawler=brawler,
             level=level,
             power_points=power_points, 
@@ -29,7 +30,7 @@ class CreateUserProfileBrawlerMutation(graphene.Mutation):
             abilities=abilities
             )
         ok = True
-        return CreateUserProfileBrawlerMutation(UserProfileBrawler=userProfileBrawler, ok=ok)
+        return CreateUserProfileBrawlerMutation(userProfileBrawler=userProfileBrawler, ok=ok)
 
 
 class UpdateUserProfileBrawlerMutation(graphene.Mutation):
