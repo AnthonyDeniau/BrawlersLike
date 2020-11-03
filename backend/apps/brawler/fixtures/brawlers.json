@@ -1,0 +1,15 @@
+[
+  {
+    "model": "brawler.brawler",
+    "pk": 1,
+    "fields": {
+      "name": "Shelly",
+      "cost": 0,
+      "description": "Shelly's spread-fire shotgun blasts the other team with buckshot. Her Super destroys cover and keeps her opponents at a distance!",
+      "avatar": "https://cdn.starlist.pro/brawler/Shelly.png?v=1",
+      "rarity": 0,
+      "health": 5320,
+      "speed": 1
+    }
+  }
+]

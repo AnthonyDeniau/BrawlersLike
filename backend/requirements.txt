@@ -1,4 +1,0 @@
-yapf
-django
-graphene-django
-django_enumfield
