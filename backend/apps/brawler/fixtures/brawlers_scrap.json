@@ -1,0 +1,522 @@
+[
+  {
+    "model": "brawler.brawler",
+    "pk": 1,
+    "fields": {
+      "name": "Shelly",
+      "description": "Shelly's spread-fire shotgun blasts the other team with buckshot. Her Super destroys cover and keeps her opponents at a distance!",
+      "avatar": "https://cdn.starlist.pro/brawler/Shelly.png?v=1",
+      "cost": "0",
+      "rarity": "CLASSIC",
+      "health": "5320",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 2,
+    "fields": {
+      "name": "Nita",
+      "description": "Nita strikes her enemies with a thunderous shockwave. Her Super summons a massive bear to fight by her side!",
+      "avatar": "https://cdn.starlist.pro/brawler/Nita.png?v=1",
+      "cost": "10",
+      "rarity": "CLASSIC",
+      "health": "5600",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 3,
+    "fields": {
+      "name": "Colt",
+      "description": "Colt fires an accurate burst of bullets from his dual revolvers. His Super shreds cover and extends the bullet barrage!",
+      "avatar": "https://cdn.starlist.pro/brawler/Colt.png?v=1",
+      "cost": "60",
+      "rarity": "CLASSIC",
+      "health": "3920",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 4,
+    "fields": {
+      "name": "Bull",
+      "description": "Bull deals massive damage up close with his shotgun. For his Super move, he charges through barriers and knocks back enemies!",
+      "avatar": "https://cdn.starlist.pro/brawler/Bull.png?v=1",
+      "cost": "250",
+      "rarity": "CLASSIC",
+      "health": "7000",
+      "speed": 2
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 5,
+    "fields": {
+      "name": "Jessie",
+      "description": "Jessie's Shock Rifle shoots energy orbs that bounce between enemies. Her Super deploys a cute but deadly gun turret!",
+      "avatar": "https://cdn.starlist.pro/brawler/Jessie.png?v=1",
+      "cost": "500",
+      "rarity": "CLASSIC",
+      "health": "4480",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 6,
+    "fields": {
+      "name": "Brock",
+      "description": "Brock fires a long-range, explosive rocket at enemies. His Super is a ballistic rocket barrage that destroys cover!",
+      "avatar": "https://cdn.starlist.pro/brawler/Brock.png?v=1",
+      "cost": "1000",
+      "rarity": "CLASSIC",
+      "health": "3640",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 7,
+    "fields": {
+      "name": "Dynamike",
+      "description": "Dynamike lobs two explosive sticks of dynamite. His Super attack is a whole barrel full of dynamite that blows up cover!",
+      "avatar": "https://cdn.starlist.pro/brawler/Dynamike.png?v=1",
+      "cost": "2000",
+      "rarity": "CLASSIC",
+      "health": "3920",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 8,
+    "fields": {
+      "name": "Bo",
+      "description": "Bo fires three explosive arrows toward his targets. His Super ability places a trio of hidden, explosive mines on the ground!",
+      "avatar": "https://cdn.starlist.pro/brawler/Bo.png?v=1",
+      "cost": "3000",
+      "rarity": "CLASSIC",
+      "health": "5040",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 9,
+    "fields": {
+      "name": "Tick",
+      "description": "Tick is a metal ball of barely controlled excitement and energy - explosive energy! He throws mines, and his Super makes his head detach, seek a target and explode.",
+      "avatar": "https://cdn.starlist.pro/brawler/Tick.png?v=1",
+      "cost": "4000",
+      "rarity": "CLASSIC",
+      "health": "3080",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 10,
+    "fields": {
+      "name": "8-Bit",
+      "description": "8-Bit lumbers along like an arcade cabinet on legs. He shoots Blaster Beams and his Super boosts friendlies' damage!",
+      "avatar": "https://cdn.starlist.pro/brawler/8-Bit.png?v=1",
+      "cost": "6000",
+      "rarity": "CLASSIC",
+      "health": "6020",
+      "speed": -1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 11,
+    "fields": {
+      "name": "Emz",
+      "description": "Emz attacks with blasts of hair spray that deal damage over time, and slows down opponents with her Super.",
+      "avatar": "https://cdn.starlist.pro/brawler/Emz.png?v=1",
+      "cost": "8000",
+      "rarity": "CLASSIC",
+      "health": "5040",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 12,
+    "fields": {
+      "name": "El Primo",
+      "description": "El Primo throws a flurry of punches at his enemies. His Super is a leaping elbow drop that deals damage to all caught underneath!",
+      "avatar": "https://cdn.starlist.pro/brawler/El-Primo.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "8400",
+      "speed": 2
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 13,
+    "fields": {
+      "name": "Barley",
+      "description": "Barley attacks by lobbing bottles at enemies, doing splash damage. His Super is a huge barrage of burning bottles!",
+      "avatar": "https://cdn.starlist.pro/brawler/Barley.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "3360",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 14,
+    "fields": {
+      "name": "Poco",
+      "description": "Poco fires damaging sound waves at enemies. His Super can heal both Poco himself and his teammates!",
+      "avatar": "https://cdn.starlist.pro/brawler/Poco.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "5600",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 15,
+    "fields": {
+      "name": "Rosa",
+      "description": "This boxing botanist will plant her feet and go toe to toe! Her Super gives her tough, vegan protective gear.",
+      "avatar": "https://cdn.starlist.pro/brawler/Rosa.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "7560",
+      "speed": 2
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 16,
+    "fields": {
+      "name": "Rico",
+      "description": "Rico fires a burst of bullets that bounce off walls. His Super burst is a long barrage of bouncy bullets that pierce targets!",
+      "avatar": "https://cdn.starlist.pro/brawler/Rico.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "3640",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 17,
+    "fields": {
+      "name": "Darryl",
+      "description": "Darryl has a powerful double-shotgun attack. His Super move is a reckless roll inside his bouncy barrel!",
+      "avatar": "https://cdn.starlist.pro/brawler/Darryl.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "7000",
+      "speed": 2
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 18,
+    "fields": {
+      "name": "Penny",
+      "description": "Penny shoots bags of coins, damaging the target and anyone standing behind. Her Super is a mortar-style cannon turret!",
+      "avatar": "https://cdn.starlist.pro/brawler/Penny.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "4480",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 19,
+    "fields": {
+      "name": "Carl",
+      "description": "Carl throws his Pickaxe like a boomerang. His Super is a crazy cart spin that clobbers anyone around him.",
+      "avatar": "https://cdn.starlist.pro/brawler/Carl.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "6160",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 20,
+    "fields": {
+      "name": "Jacky",
+      "description": "Jacky works her Jackhammer to shake up the ground and nearby enemies. Her Super pulls in nearby foes, leaving them in the dust!",
+      "avatar": "https://cdn.starlist.pro/brawler/Jacky.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "7000",
+      "speed": 2
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 21,
+    "fields": {
+      "name": "Piper",
+      "description": "Piper's sniper shots do more damage the farther they travel. Her Super drops grenades at her feet, while Piper herself leaps away!",
+      "avatar": "https://cdn.starlist.pro/brawler/Piper.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "3360",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 22,
+    "fields": {
+      "name": "Pam",
+      "description": "Pam shoots from the hip, peppering targets with shrapnel. Her Super is a healing turret that restores her and teammates' health!",
+      "avatar": "https://cdn.starlist.pro/brawler/Pam.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "6720",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 23,
+    "fields": {
+      "name": "Frank",
+      "description": "Frank swings his hammer at enemies, sending a shockwave. His Super is an especially powerful blow that stuns enemies!",
+      "avatar": "https://cdn.starlist.pro/brawler/Frank.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "8960",
+      "speed": 2
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 24,
+    "fields": {
+      "name": "Bibi",
+      "description": "Batter up! Bibi's got a sweet swing that can knock back enemies when her Home Run bar is charged. Her Super is a bouncing ball of gum that deals damage.",
+      "avatar": "https://cdn.starlist.pro/brawler/Bibi.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "5320",
+      "speed": 3
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 25,
+    "fields": {
+      "name": "Bea",
+      "description": "Bea loves bugs and hugs. She shoots her mechanical drones at range, and her Super sends forth an angry army of swarming bees!",
+      "avatar": "https://cdn.starlist.pro/brawler/Bea.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "3360",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 26,
+    "fields": {
+      "name": "Nani",
+      "description": "Nani loves her friends and looks over them with a watchful lens. She handles threats with angled shots, and her Super allows Nani to commandeer her pal Peep, who goes out with a bang!",
+      "avatar": "https://cdn.starlist.pro/brawler/Nani.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "3640",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 27,
+    "fields": {
+      "name": "Mortis",
+      "description": "Mortis dashes forward with each swing of his shovel. As his Super attack, he sends a cloud of bats to damage enemies and heal himself!",
+      "avatar": "https://cdn.starlist.pro/brawler/Mortis.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "5320",
+      "speed": 3
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 28,
+    "fields": {
+      "name": "Tara",
+      "description": "Tara's triple tarot card attack pierces through enemies. Her Super is a black hole that sucks in all nearby enemies, causing damage!",
+      "avatar": "https://cdn.starlist.pro/brawler/Tara.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "4760",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 29,
+    "fields": {
+      "name": "Gene",
+      "description": "Gene uses his magic lamp to shoot a splitting projectile. His super is a magical hand that grabs and pulls enemies close!",
+      "avatar": "https://cdn.starlist.pro/brawler/Gene.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "4760",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 30,
+    "fields": {
+      "name": "Max",
+      "description": "Max goes fast! Her attack is a fast-firing blaster. Her Super speeds up her and allies!",
+      "avatar": "https://cdn.starlist.pro/brawler/Max.png?v=2",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "4480",
+      "speed": 3
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 31,
+    "fields": {
+      "name": "Mr. P",
+      "description": "Mr. P is a disgruntled luggage handler who angrily hurls suitcases at opponents. His Super calls robo-porters to help him.",
+      "avatar": "https://cdn.starlist.pro/brawler/Mr.P.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "4480",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 32,
+    "fields": {
+      "name": "Sprout",
+      "description": "Sprout was built to plant life, launching bouncy Seed Bombs with reckless love. Its Super creates a plant-based obstacle!",
+      "avatar": "https://cdn.starlist.pro/brawler/Sprout.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "4200",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 33,
+    "fields": {
+      "name": "Spike",
+      "description": "Spike throws cactus grenades that send needles flying, and a show-stopping Super: a field of cactus spines that slows down and damages enemies!",
+      "avatar": "https://cdn.starlist.pro/brawler/Spike.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "3360",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 34,
+    "fields": {
+      "name": "Crow",
+      "description": "Crow fires a trio of poisoned daggers. As a Super move he leaps, firing daggers both on jump and on landing!",
+      "avatar": "https://cdn.starlist.pro/brawler/Crow.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "3360",
+      "speed": 3
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 35,
+    "fields": {
+      "name": "Leon",
+      "description": "Leon shoots a quick salvo of blades at his target. His Super trick is a smoke bomb that makes him invisible for a little while!",
+      "avatar": "https://cdn.starlist.pro/brawler/Leon.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "4480",
+      "speed": 3
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 36,
+    "fields": {
+      "name": "Sandy",
+      "description": "Sandy is a sleep-deprived Brawler with powerful control over sand: casting sharp pebbles at enemies, and summoning a sandstorm to hide teammates.",
+      "avatar": "https://cdn.starlist.pro/brawler/Sandy.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "5320",
+      "speed": 2
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 37,
+    "fields": {
+      "name": "Amber",
+      "description": "Amber has always been a firebug. She loves to light up the world and any opponents that come at her!",
+      "avatar": "https://cdn.starlist.pro/brawler/Amber.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "4620",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 38,
+    "fields": {
+      "name": "Gale",
+      "description": "Gale is a tireless handyman who gets no rest. He blasts foes with a wide shot of wind and snow and his Super pushes them back with a huge gust of wind!",
+      "avatar": "https://cdn.starlist.pro/brawler/Gale.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "4760",
+      "speed": 1
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 39,
+    "fields": {
+      "name": "Surge",
+      "description": "He's a Protector with a penchant for parties. Surge attacks foes with energy drink blasts that split in two on contact. His Super upgrades his stats in 3 stages and comes complete with totally awesome body mods!",
+      "avatar": "https://cdn.starlist.pro/brawler/Surge.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "4340",
+      "speed": 0
+    }
+  },
+  {
+    "model": "brawler.brawler",
+    "pk": 40,
+    "fields": {
+      "name": "Colette",
+      "description": "Colette is going to get you! She taxes opponents' health and has fancy moves to boot.",
+      "avatar": "https://cdn.starlist.pro/brawler/Colette.png?v=1",
+      "cost": 0,
+      "rarity": "RARE",
+      "health": "4480",
+      "speed": 1
+    }
+  }
+]
