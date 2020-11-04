@@ -4,7 +4,7 @@ on:
   push:
     # Publish `master` as Docker `latest` image.
     branches:
-      - release_group_a2
+      - release_group_a
 
     # Publish `v1.2.3` tags as releases.
     tags:
@@ -22,17 +22,15 @@ jobs:
   # See also https://docs.docker.com/docker-hub/builds/automated-testing/
   test:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
 
       - name: Run tests
         run: |
-          pwd;
           if [ -f docker-compose.test.yml ]; then
-            docker-compose --file docker-compose.test.yml build
+            docker-compose --file docker-compose.test.yml build backend
             docker-compose --file docker-compose.test.yml run backend
-            docker exec -ti backend bash -c 'python3 manage.py testapp'
+            docker exec -ti backend bash -c 'python3 manage.py test --debug-mode=true'
           else
             docker build backend --file Dockerfile
           fi
