@@ -49,6 +49,9 @@ jobs:
       - name: Build frontend image
         run: docker build frontend --tag $IMAGE_FRONTEND_NAME
 
+      - name: Build prometheus image
+        run: docker build prometheus --tag $IMAGE_PROMETHEUS_NAME
+
       - name: Log into GitHub Container Registry
       # TODO: Create a PAT with `read:packages` and `write:packages` scopes and save it as an Actions secret `CR_PAT`
         run: echo "${{ secrets.PACKAGE_PAT }}" | docker login https://docker.pkg.github.com -u ${{ github.actor }} --password-stdin
