@@ -8,7 +8,7 @@ services:
       - pg_data:/var/lib/postgresql/data/
       - pg_backups:/pg_backups
     env_file:
-      - ./envtest
+      - ./envprod
     expose:
       - "5432"
   backend:
@@ -23,7 +23,7 @@ services:
       - db
       - redis
     env_file:
-      - ./envtest
+      - ./envprod
     volumes:
       - www:/data/www
 

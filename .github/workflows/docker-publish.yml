@@ -95,8 +95,8 @@ jobs:
         run: |
           IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
           sudo apt-get install sshpass
-          sshpass -p "${{ secrets.OVH_1_PASSWORD }}" scp -o "StrictHostKeyChecking no" ./envprod "${{ secrets.OVH_1_USER }}"@"${{ secrets.OVH_1_IP }}":/usr/local/
-          sshpass -p "${{ secrets.OVH_1_PASSWORD }}" scp -o "StrictHostKeyChecking no" ./docker-compose.prod.yml "${{ secrets.OVH_1_USER }}"@"${{ secrets.OVH_1_IP }}":/usr/local/
+          sshpass -p "${{ secrets.OVH_1_PASSWORD }}" scp -o "StrictHostKeyChecking no" ./envprod "${{ secrets.OVH_1_USER }}"@"${{ secrets.OVH_1_IP }}":/usr/local
+          sshpass -p "${{ secrets.OVH_1_PASSWORD }}" scp -o "StrictHostKeyChecking no" ./docker-compose.prod.yml "${{ secrets.OVH_1_USER }}"@"${{ secrets.OVH_1_IP }}":/usr/local
           sshpass -p "${{ secrets.OVH_1_PASSWORD }}" ssh -o "StrictHostKeyChecking no" . "${{ secrets.OVH_1_USER }}"@"${{ secrets.OVH_1_IP }}" 'docker-compose --file /usr/local/docker-compose.prod.yml up'
           
 
