@@ -28,7 +28,7 @@ services:
       - www:/data/www
 
   nginx:
-    build: ./docker/nginx
+    image: ghcr.io/anthonydeniau/brawlerslike_nginx:release_group_a
     container_name: brawlerlike_nginx_1_group_a
     ports:
       - 80:80

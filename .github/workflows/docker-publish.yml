@@ -46,55 +46,29 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build image
-        run: docker build backend --file ./backend/Dockerfile --tag $IMAGE_NAME
-
       - name: Log into GitHub Container Registry
       # TODO: Create a PAT with `read:packages` and `write:packages` scopes and save it as an Actions secret `CR_PAT`
         run: echo "${{ secrets.PACKAGE_PAT }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
-
-      - name: Push image to GitHub Container Registry
-        run: |
-          # IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
-
-          # # Change all uppercase to lowercase
-          # IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
-
-          # # Strip git ref prefix from version
-          # VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-
-          # # Strip "v" prefix from tag name
-          # [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-
-          # # Use Docker `latest` tag convention
-          # [ "$VERSION" == "master" ] && VERSION=latest
-
-          # echo IMAGE_ID=$IMAGE_ID
-          # echo VERSION=$VERSION
-
-          # docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
-          # docker push $IMAGE_ID:$VERSION
+        - id: backend
+        uses: ./.github/actions/docker-build-push
+        with:
+          image-name: brawlerslike_backend
+          dockerfile-path: ./backend/
+        - id: nginx
+        uses: ./.github/actions/docker-build-push
+        with:
+          image-name: brawlerslike_nginx
+          dockerfile-path: ./docker/nginx/
   deploy:
     # Ensure test job passes before pushing image.
     needs: push
-
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build image
-        run: docker build backend --file ./backend/Dockerfile --tag $IMAGE_NAME
-
-      - name: Log into GitHub Container Registry
-      # TODO: Create a PAT with `read:packages` and `write:packages` scopes and save it as an Actions secret `CR_PAT`
-        run: echo "${{ secrets.PACKAGE_PAT }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
-
       - name: Push image to GitHub Container Registry
         run: |
-          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
-          sudo apt-get install sshpass
           sshpass -p "${{ secrets.OVH_1_PASSWORD }}" ssh -o "StrictHostKeyChecking no" "${{ secrets.OVH_1_USER }}"@"${{ secrets.OVH_1_IP }}" 'ls -la /tmp'
           sshpass -p "${{ secrets.OVH_1_PASSWORD }}" scp -o "StrictHostKeyChecking no" ./envprod "${{ secrets.OVH_1_USER }}"@"${{ secrets.OVH_1_IP }}":/tmp
           sshpass -p "${{ secrets.OVH_1_PASSWORD }}" scp -o "StrictHostKeyChecking no" ./docker-compose.prod.yml "${{ secrets.OVH_1_USER }}"@"${{ secrets.OVH_1_IP }}":/tmp
