@@ -39,12 +39,6 @@ services:
       - backend
     volumes:
       - www:/data/www
-  
-  frontend:
-    image : 
-    container_name: brawlerlike_frontend_1
-    volumes: 
-      - www:/frontend/build
 
   redis:
     restart: always
