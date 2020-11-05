@@ -75,5 +75,5 @@ jobs:
           docker tag $IMAGE_BACKEND_NAME $IMAGE_BACKEND_ID:$VERSION
           docker push $IMAGE_BACKEND_ID:$VERSION
 
-          docker tag $IMAGE_NGINX_NAME $IMAGE_BACKEND_ID:$VERSION
+          docker tag $IMAGE_NGINX_NAME $IMAGE_NGINX_ID:$VERSION
           docker push $IMAGE_NGINX_ID:$VERSION
