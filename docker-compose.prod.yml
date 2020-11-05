@@ -44,6 +44,13 @@ services:
     image: redis:6.0.9
     container_name: brawlerlike_redis_1_group_a
 
+  grafana:
+    container_name: brawlerlike_grafana_1_group_a
+    image : grafana/grafana:latest
+    ports:
+      - 3000:3000
+
+
 volumes:
   pg_data:
   pg_backups:
