@@ -12,7 +12,7 @@ services:
     expose:
       - "5432"
   backend:
-    build: ./backend
+    image: ghcr.io/AnthonyDeniau/brawlerslike-backend
     container_name: brawlerlike_backend_1
     entrypoint:
       - /bin/sh
@@ -28,7 +28,7 @@ services:
       - www:/data/www
 
   nginx:
-    build: ./docker/nginx
+    image: ghcr.io/AnthonyDeniau/brawlerslike-nginx
     container_name: brawlerlike_nginx_1
     ports:
       - 80:80
