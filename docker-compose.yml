@@ -11,6 +11,7 @@ services:
       - ./envtest
     expose:
       - "5432"
+
   backend:
     build: ./backend
     container_name: brawlerlike_backend_1
@@ -24,6 +25,13 @@ services:
       - redis
     env_file:
       - ./envtest
+    volumes:
+      - www:/data/www
+
+  frontend:
+    build: ./frontend
+    container_name: brawlerlike_frontend_1
+    command: cp -r ./build /data/www
     volumes:
       - www:/data/www
 
@@ -44,7 +52,28 @@ services:
     image: redis:6.0.9
     container_name: brawlerlike_redis_1
 
+  prometheus:
+    build: ./docker/prometheus
+    depends_on:
+      - backend
+    links:
+      - backend
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+    ports:
+      - 9090:9090
+
+  grafana:
+    image: grafana/grafana:latest
+    depends_on:
+      - prometheus
+    ports:
+      - 3060:3000
+    volumes:
+      - grafana:/etc/grafana
+
 volumes:
   pg_data:
   pg_backups:
   www:
+  grafana:

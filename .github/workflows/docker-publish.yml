@@ -56,6 +56,11 @@ jobs:
         with:
           image-name: brawlerlike/nginx
           dockerfile-path: ./docker/nginx/
+      - id: prometheus
+        uses: ./.github/actions/docker-build-push
+        with:
+          image-name: brawlerlike/prometheus
+          dockerfile-path: ./docker/prometheus/
 
   deploy:
     needs: push

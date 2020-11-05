@@ -9,7 +9,7 @@ ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '127.0.0.1').split(',')
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django_prometheus.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.getenv('POSTGRES_DB', 'brawler_db'),
         'USER': os.getenv('POSTGRES_USER', 'brawler_dbusr'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'password'),
@@ -57,10 +57,3 @@ STATIC_URL = "/static/"
 STATIC_ROOT = "/data/www/static"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = "/data/www/media"
-
-INSTALLED_APPS += ['django_prometheus']
-MIDDLEWARE = [
-    'django_prometheus.middleware.PrometheusBeforeMiddleware', *MIDDLEWARE,
-    'django_prometheus.middleware.PrometheusAfterMiddleware'
-]
-PROMETHEUS_EXPORT_MIGRATIONS = False
