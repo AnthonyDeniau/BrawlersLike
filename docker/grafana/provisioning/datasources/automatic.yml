@@ -1,0 +1,29 @@
+
+apiVersion: 1
+
+deleteDatasources:
+  - name: MYINFLUX
+    orgId: 1
+
+datasources:
+- name: brawlerlike_db_1
+  type: postgresql
+  access: proxy
+  url: https://brawlerlike_db_1
+  password: $POSTGRES_PASSWORD
+  user: brawler_user
+  database: brawler_db
+  basicAuth: false
+  basicAuthUser: admin
+  basicAuthPassword: admin
+  withCredentials:
+  isDefault: true
+  jsonData:
+     tlsAuth: false
+     tlsAuthWithCACert: false
+  secureJsonData:
+    tlsCACert: ""
+    tlsClientCert: ""
+    tlsClientKey: ""
+  version: 1
+  editable: true
