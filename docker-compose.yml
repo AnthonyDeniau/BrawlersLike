@@ -37,7 +37,7 @@ services:
     image: redis:6.0.9
 
   prometheus:
-    build: docker.pkg.github.com/anthonydeniau/brawlerslike/brawlerslike-prometheus:release_group_b
+    image: docker.pkg.github.com/anthonydeniau/brawlerslike/brawlerslike-prometheus:release_group_b
     depends_on:
       - backend
     links:
