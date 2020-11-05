@@ -7,7 +7,7 @@ deleteDatasources:
 
 datasources:
 - name: brawlerlike_db_1
-  type: postgresql
+  type: postgres
   access: proxy
   url: https://brawlerlike_db_1
   password: $POSTGRES_PASSWORD
