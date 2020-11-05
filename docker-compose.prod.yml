@@ -27,9 +27,9 @@ services:
     volumes:
       - www:/data/www
 
-  nginx:
-    image: ghcr.io/anthonydeniau/brawlerlike/nginx
-    container_name: brawlerlike_nginx_1
+  frontend:
+    image: ghcr.io/anthonydeniau/brawlerlike/frontend
+    container_name: brawlerlike_frontend_1
     ports:
       - 80:80
     depends_on:

@@ -51,11 +51,11 @@ jobs:
         with:
           image-name: brawlerlike/backend
           dockerfile-path: ./backend/
-      - id: nginx
+      - id: frontend
         uses: ./.github/actions/docker-build-push
         with:
-          image-name: brawlerlike/nginx
-          dockerfile-path: ./docker/nginx/
+          image-name: brawlerlike/frontend
+          dockerfile-path: ./docker/frontend/
       - id: prometheus
         uses: ./.github/actions/docker-build-push
         with:

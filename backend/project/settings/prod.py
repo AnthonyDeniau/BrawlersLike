@@ -53,10 +53,10 @@ logging.config.dictConfig({
 })
 
 SESSION_COOKIE_NAME = os.getenv('SESSION_COOKIE_NAME', "brawlerlike")
-STATIC_URL = "/static/"
-STATIC_ROOT = "/data/www/static"
-MEDIA_URL = "/media/"
-MEDIA_ROOT = "/data/www/media"
+STATIC_URL = "/django/static/"
+STATIC_ROOT = "/data/www/django/static"
+MEDIA_URL = "/django/media/"
+MEDIA_ROOT = "/data/www/django/media"
 
 INSTALLED_APPS += ['django_prometheus']
 MIDDLEWARE = [

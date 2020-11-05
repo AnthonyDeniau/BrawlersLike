@@ -31,13 +31,6 @@ services:
   frontend:
     build: ./frontend
     container_name: brawlerlike_frontend_1
-    command: cp -r ./build /data/www
-    volumes:
-      - www:/data/www
-
-  nginx:
-    build: ./docker/nginx
-    container_name: brawlerlike_nginx_1
     ports:
       - 80:80
     depends_on:
