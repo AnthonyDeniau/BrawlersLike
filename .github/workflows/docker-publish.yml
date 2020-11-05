@@ -75,4 +75,5 @@ jobs:
           sshpass -p "${{ secrets.OVH_1_PASSWORD }}" scp -o "StrictHostKeyChecking no" -r ./docker "${{ secrets.OVH_1_USER }}"@"${{ secrets.OVH_1_IP }}":/tmp
           sshpass -p ${{secrets.OVH_1_PASSWORD}} -v ssh -o "StrictHostKeyChecking no" ${{secrets.OVH_1_USER}}@${{secrets.OVH_1_IP}} "echo -e '\nDJANGO_SECRET_KEY=${{secrets.DJANGO_SECRET_KEY}}' >> /tmp/envprod"
           sshpass -p ${{secrets.OVH_1_PASSWORD}} -v ssh -o "StrictHostKeyChecking no" ${{secrets.OVH_1_USER}}@${{secrets.OVH_1_IP}} "echo -e 'POSTGRES_PASSWORD=${{secrets.POSTGRES_PASSWORD}}' >> /tmp/envprod"
+          sed -i 's/<PASS>/${{ secrets.POSTGRES_PASSWORD}}/g' docker/grafana/provisioning/datasources/automatic.yml
           sshpass -p "${{ secrets.OVH_1_PASSWORD }}" ssh -o "StrictHostKeyChecking no" "${{ secrets.OVH_1_USER }}"@"${{ secrets.OVH_1_IP }}" 'docker-compose --file /tmp/docker-compose.prod.yml up -d'
