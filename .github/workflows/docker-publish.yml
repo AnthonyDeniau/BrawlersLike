@@ -48,17 +48,17 @@ jobs:
 
       - name: Log into GitHub Container Registry
       # TODO: Create a PAT with `read:packages` and `write:packages` scopes and save it as an Actions secret `CR_PAT`
-        run: echo "${{ secrets.PACKAGE_PAT }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
-        - id: backend
-        uses: ./.github/actions/docker-build-push
-        with:
-          image-name: brawlerslike_backend
-          dockerfile-path: ./backend/
-        - id: nginx
-        uses: ./.github/actions/docker-build-push
-        with:
-          image-name: brawlerslike_nginx
-          dockerfile-path: ./docker/nginx/
+      run: echo "${{ secrets.PACKAGE_PAT }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
+      - id: backend
+      uses: ./.github/actions/docker-build-push
+      with:
+        image-name: brawlerslike_backend
+        dockerfile-path: ./backend/
+      - id: nginx
+      uses: ./.github/actions/docker-build-push
+      with:
+        image-name: brawlerslike_nginx
+        dockerfile-path: ./docker/nginx/
   deploy:
     # Ensure test job passes before pushing image.
     needs: push
