@@ -53,8 +53,8 @@ jobs:
 
       - name: Push images to GitHub Container Registry
         run: |
-          IMAGE_BACKEND_ID=docker.pkg.github.com/${{ github.repository_owner }}/$IMAGE_BACKEND_NAME
-          IMAGE_NGINX_ID=docker.pkg.github.com/${{ github.repository_owner }}/$IMAGE_NGINX_NAME
+          IMAGE_BACKEND_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_BACKEND_NAME
+          IMAGE_NGINX_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NGINX_NAME
 
           # Change all uppercase to lowercase
           IMAGE_BACKEND_ID=$(echo $IMAGE_BACKEND_ID | tr '[A-Z]' '[a-z]')
