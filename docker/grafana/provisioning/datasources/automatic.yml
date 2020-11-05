@@ -10,7 +10,7 @@ datasources:
   type: postgresql
   access: proxy
   url: https://brawlerlike_db_1
-  password: <PASS>
+  password: $POSTGRES_PASSWORD
   user: brawler_user
   database: brawler_db
   basicAuth: false

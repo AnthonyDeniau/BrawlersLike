@@ -51,9 +51,8 @@ services:
       - 3000:3000
     volumes:
       - ./docker/grafana/provisioning:/etc/grafana/provisioning
-
-
-
+    env_file:
+      - ./envprod
 volumes:
   pg_data:
   pg_backups:
