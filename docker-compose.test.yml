@@ -29,7 +29,7 @@ services:
       - backend
     links:
       - backend
-    command: promtool check config prometheus.yml
+    entrypoint: promtool check config prometheus.yml
     ports:
       - 9090:9090
 
