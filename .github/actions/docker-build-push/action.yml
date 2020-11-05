@@ -37,3 +37,4 @@ runs:
 
         docker tag ${{ inputs.image-name }} $IMAGE_ID:$VERSION
         docker push $IMAGE_ID:$VERSION
+      shell: bash
