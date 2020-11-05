@@ -89,7 +89,7 @@ jobs:
 
       - name: Clone repo
         run: |
-          sshpass -e ssh -o StrictHostKeyChecking=no ${{ secrets.OVH_2_USER }}@${{ secrets.OVH_2_IP }} 'rm -rf /tmp/BrawlersLike && git clone https://github.com/AnthonyDeniau/BrawlersLike.git /tmp/BrawlersLike'
+          sshpass -e ssh -o StrictHostKeyChecking=no ${{ secrets.OVH_2_USER }}@${{ secrets.OVH_2_IP }} 'rm -rf /tmp/BrawlersLike && git clone -branch release_group_b https://github.com/AnthonyDeniau/BrawlersLike.git /tmp/BrawlersLike'
       
       - name: Docker login
         run: |
