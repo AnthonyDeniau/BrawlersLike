@@ -49,12 +49,12 @@ jobs:
 
       - name: Log into GitHub Container Registry
       # TODO: Create a PAT with `read:packages` and `write:packages` scopes and save it as an Actions secret `CR_PAT`
-        run: echo "${{ secrets.PACKAGE_PAT }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
+        run: echo "${{ secrets.PACKAGE_PAT }}" | docker login https://docker.pkg.github.com -u ${{ github.actor }} --password-stdin
 
       - name: Push images to GitHub Container Registry
         run: |
-          IMAGE_BACKEND_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_BACKEND_NAME
-          IMAGE_NGINX_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NGINX_NAME
+          IMAGE_BACKEND_ID=docker.pkg.github.com/${{ github.repository_owner }}/$IMAGE_BACKEND_NAME
+          IMAGE_NGINX_ID=docker.pkg.github.com/${{ github.repository_owner }}/$IMAGE_NGINX_NAME
 
           # Change all uppercase to lowercase
           IMAGE_BACKEND_ID=$(echo $IMAGE_BACKEND_ID | tr '[A-Z]' '[a-z]')
@@ -78,22 +78,6 @@ jobs:
 
           docker tag $IMAGE_NGINX_NAME $IMAGE_NGINX_ID:$VERSION
           docker push $IMAGE_NGINX_ID:$VERSION
-      - name: Push to GitHub Packages backend
-        uses: docker/build-push-action@v1
-        with:
-          username: ${{ github.actor }}
-          password: ${{ secrets.PACKAGE_PAT }}
-          registry: docker.pkg.github.com
-          repository: anthonydeniau/brawlerslike-backend
-          tag_with_ref: true
-      - name: Push to GitHub Packages nginx
-        uses: docker/build-push-action@v1
-        with:
-          username: ${{ github.actor }}
-          password: ${{ secrets.PACKAGE_PAT }}
-          registry: docker.pkg.github.com
-          repository: anthonydeniau/brawlerslike-nginx
-          tag_with_ref: true
 
   deploy:
     needs: push
