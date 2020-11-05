@@ -4,7 +4,7 @@ on:
   push:
     # Publish `master` as Docker `latest` image.
     branches:
-      - feature/group_c
+      - release_group_c
 
     # Publish `v1.2.3` tags as releases.
     tags:
