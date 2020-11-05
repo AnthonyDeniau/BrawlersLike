@@ -17,6 +17,15 @@ services:
     env_file:
       - ./envtest
 
+  nginx:
+    build: ./docker/nginx
+    container_name: brawlerlike_nginx_1
+    depends_on:
+      - backend
+    links:
+      - backend
+    command: nginx -t
+
 
 volumes:
   pg_data:
