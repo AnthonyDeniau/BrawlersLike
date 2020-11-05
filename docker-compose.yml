@@ -3,7 +3,6 @@ version: "3"
 services:
   db:
     image: postgres:13.0
-    container_name: brawlerlike_db_1
     volumes:
       - pg_data:/var/lib/postgresql/data/
       - pg_backups:/pg_backups
@@ -13,7 +12,6 @@ services:
       - "5432"
   backend:
     image: docker.pkg.github.com/anthonydeniau/brawlerslike/brawlerslike-backend:release_group_b
-    container_name: brawlerlike_backend_1
     entrypoint:
       - /bin/sh
       - ./entrypoint.sh
@@ -27,9 +25,8 @@ services:
     volumes:
       - www:/data/www
 
-  nginx:
-    image: docker.pkg.github.com/anthonydeniau/brawlerslike/brawlerslike-nginx:release_group_b
-    container_name: brawlerlike_nginx_1
+  frontend:
+    image: docker.pkg.github.com/anthonydeniau/brawlerslike/brawlerslike-frontend:release_group_b
     ports:
       - 80:80
     depends_on:
@@ -42,7 +39,6 @@ services:
   redis:
     restart: always
     image: redis:6.0.9
-    container_name: brawlerlike_redis_1
 
 volumes:
   pg_data:
