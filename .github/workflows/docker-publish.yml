@@ -97,7 +97,7 @@ jobs:
 
       - name: Docker compose pull && up
         run: |
-          sshpass -e ssh -o StrictHostKeyChecking=no ${{ secrets.OVH_2_USER }}@${{ secrets.OVH_2_IP }} 'cd /tmp/BrawlersLike && docker-compose pull && docker-compose up -d'
+          sshpass -e ssh -o StrictHostKeyChecking=no ${{ secrets.OVH_2_USER }}@${{ secrets.OVH_2_IP }} 'cd /tmp/BrawlersLike && docker-compose pull && docker-compose up --remove-orphans -d'
           echo "Deployed !"
       - name: Clean
         run: |
