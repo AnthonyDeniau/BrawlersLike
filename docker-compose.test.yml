@@ -7,6 +7,7 @@ services:
       - pg_data:/var/lib/postgresql/data/
     env_file:
       - ./envtest
+
   backend:
     build: ./backend
     command: bash -c "python manage.py test && python manage.py migrate"
@@ -25,13 +26,7 @@ services:
 
   prometheus:
     build: ./prometheus
-    depends_on:
-      - backend
-    links:
-      - backend
     entrypoint: promtool check config /etc/prometheus/prometheus.yml
-    ports:
-      - 9090:9090
 
 volumes:
   pg_data:
