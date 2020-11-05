@@ -8,7 +8,8 @@ on:
 
 env:
   # TODO: Change variable to your image's name.
-  IMAGE_NAME: brawlerslike-backend
+  IMAGE_BACKEND_NAME: brawlerslike-backend
+  IMAGE_NGINX_NAME: brawlerslike-nginx
 
 jobs:
   # Run tests.
@@ -24,6 +25,7 @@ jobs:
           if [ -f docker-compose.test.yml ]; then
             docker-compose --file docker-compose.test.yml build
             docker-compose --file docker-compose.test.yml run backend
+            docker-compose --file docker-compose.test.yml run nginx
           fi
 
   # Push image to GitHub Packages.
@@ -39,7 +41,10 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build image
-        run: docker build backend --tag $IMAGE_NAME
+        run: docker build backend --tag $IMAGE_BACKEND_NAME
+
+      - name: Build image
+        run: docker build docker/nginx --tag $IMAGE_NGINX_NAME
 
       - name: Log into GitHub Container Registry
       # TODO: Create a PAT with `read:packages` and `write:packages` scopes and save it as an Actions secret `CR_PAT`
@@ -47,10 +52,12 @@ jobs:
 
       - name: Push image to GitHub Container Registry
         run: |
-          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
+          IMAGE_BACKEND_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_BACKEND_NAME
+          IMAGE_NGINX_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NGINX_NAME
 
           # Change all uppercase to lowercase
-          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+          IMAGE_BACKEND_ID=$(echo $IMAGE_BACKEND_ID | tr '[A-Z]' '[a-z]')
+          IMAGE_NGINX_ID=$(echo $IMAGE_BACKEND_ID | tr '[A-Z]' '[a-z]')
 
           # Strip git ref prefix from version
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
@@ -61,8 +68,12 @@ jobs:
           # Use Docker `latest` tag convention
           [ "$VERSION" == "master" ] && VERSION=latest
 
-          echo IMAGE_ID=$IMAGE_ID
+          echo IMAGE_BACKEND_ID=$IMAGE_BACKEND_ID
+          echo IMAGE_NGINX_ID=$IMAGE_NGINX_ID
           echo VERSION=$VERSION
 
-          docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
-          docker push $IMAGE_ID:$VERSION
+          docker tag $IMAGE_BACKEND_NAME $IMAGE_BACKEND_ID:$VERSION
+          docker push $IMAGE_BACKEND_ID:$VERSION
+
+          docker tag $IMAGE_NGINX_NAME $IMAGE_BACKEND_ID:$VERSION
+          docker push $IMAGE_NGINX_ID:$VERSION
