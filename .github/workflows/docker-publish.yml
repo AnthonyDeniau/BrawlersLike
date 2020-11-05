@@ -78,6 +78,22 @@ jobs:
 
           docker tag $IMAGE_NGINX_NAME $IMAGE_NGINX_ID:$VERSION
           docker push $IMAGE_NGINX_ID:$VERSION
+      - name: Push to GitHub Packages backend
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.PACKAGE_PAT }}
+          registry: docker.pkg.github.com
+          repository: ${{ github.repository_owner }}/$IMAGE_BACKEND_NAME
+          tag_with_ref: true
+      - name: Push to GitHub Packages backend
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.PACKAGE_PAT }}
+          registry: docker.pkg.github.com
+          repository: ${{ github.repository_owner }}/$IMAGE_NGINX_NAME
+          tag_with_ref: true
 
   deploy:
     needs: push
@@ -93,7 +109,7 @@ jobs:
       
       - name: Docker login
         run: |
-          sshpass -e ssh -o StrictHostKeyChecking=no ${{ secrets.OVH_2_USER }}@${{ secrets.OVH_2_IP }} 'echo "${{ secrets.PACKAGE_PAT }}" | docker login https://ghcr.io -u AnthonyDeniau --password-stdin'
+          sshpass -e ssh -o StrictHostKeyChecking=no ${{ secrets.OVH_2_USER }}@${{ secrets.OVH_2_IP }} 'echo "${{ secrets.PACKAGE_PAT }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin'
 
       - name: Docker compose pull && up
         run: |
