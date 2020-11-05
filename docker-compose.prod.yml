@@ -1,0 +1,50 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:13.0
+    container_name: brawlerlike_db_1
+    volumes:
+      - pg_data:/var/lib/postgresql/data/
+      - pg_backups:/pg_backups
+    env_file:
+      - ./envtest
+    expose:
+      - "5432"
+  backend:
+    image: ghcr.io/anthonydeniau/brawlerlike/backend
+    container_name: brawlerlike_backend_1
+    entrypoint:
+      - /bin/sh
+      - ./entrypoint.sh
+    expose:
+      - "8000"
+    depends_on:
+      - db
+      - redis
+    env_file:
+      - ./envtest
+    volumes:
+      - www:/data/www
+
+  nginx:
+    build: ./docker/nginx
+    container_name: brawlerlike_nginx_1
+    ports:
+      - 80:80
+    depends_on:
+      - backend
+    links:
+      - backend
+    volumes:
+      - www:/data/www
+
+  redis:
+    restart: always
+    image: redis:6.0.9
+    container_name: brawlerlike_redis_1
+
+volumes:
+  pg_data:
+  pg_backups:
+  www:
