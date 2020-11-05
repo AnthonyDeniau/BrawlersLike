@@ -8,6 +8,7 @@ ADD package.json .
 ADD tsconfig.json .
 
 RUN yarn install --silent
+RUN yarn test
 RUN yarn build
 
 FROM nginx:alpine as prod
