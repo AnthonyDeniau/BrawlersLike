@@ -80,6 +80,5 @@ jobs:
 
       - name: Deploy on OVH
         run: |
-          sshpass -p ${{ secrets.OVH_2_PASSWORD }} ssh ${{ secrets.OVH_2_USER }}@${{ secrets.OVH_2_IP }} "ls"
-          ssh ${{ secrets.OVH_2_USER }}@${{ secrets.OVH_2_IP }} "ls"
-          sshpass -p ${{ secrets.OVH_2_PASSWORD }} ssh ${{ secrets.OVH_2_USER }}@${{ secrets.OVH_2_IP }} 'rm -rf /tmp/BrawlersLike && git clone https://github.com/AnthonyDeniau/BrawlersLike.git /tmp/BrawlersLike && cd /tmp/BrawlersLike && echo "${{ secrets.PACKAGE_PAT }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin && docker-compose up -d'
+          export SSHPASS=${{ secrets.OVH_2_PASSWORD }}
+          sshpass -e ssh -o StrictHostKeyChecking=no ${{ secrets.OVH_2_USER }}@${{ secrets.OVH_2_IP }} 'rm -rf /tmp/BrawlersLike && git clone https://github.com/AnthonyDeniau/BrawlersLike.git /tmp/BrawlersLike && cd /tmp/BrawlersLike && echo "${{ secrets.PACKAGE_PAT }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin && docker-compose up -d'
