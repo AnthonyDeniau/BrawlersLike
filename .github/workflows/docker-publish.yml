@@ -1,4 +1,4 @@
-name: Docker
+name: docker_publish_group_2
 
 on:
   push:
