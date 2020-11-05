@@ -23,6 +23,15 @@ services:
       - backend
     command: nginx -t
 
+  prometheus:
+    build: ./prometheus
+    depends_on:
+      - backend
+    links:
+      - backend
+    command: promtool check config prometheus.yml
+    ports:
+      - 9090:9090
 
 volumes:
   pg_data:

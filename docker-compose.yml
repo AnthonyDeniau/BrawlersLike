@@ -36,6 +36,17 @@ services:
     restart: always
     image: redis:6.0.9
 
+  prometheus:
+    build: docker.pkg.github.com/anthonydeniau/brawlerslike/brawlerslike-prometheus:release_group_b
+    depends_on:
+      - backend
+    links:
+      - backend
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+    ports:
+      - 9090:9090
+
 volumes:
   pg_data:
   pg_backups:
