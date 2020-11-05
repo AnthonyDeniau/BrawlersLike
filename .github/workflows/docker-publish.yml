@@ -84,7 +84,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.PACKAGE_PAT }}
           registry: docker.pkg.github.com
-          repository: ${{ github.repository_owner }}/brawlerslike-backend
+          repository: anthonydeniau/brawlerslike-backend
           tag_with_ref: true
       - name: Push to GitHub Packages nginx
         uses: docker/build-push-action@v1
@@ -92,7 +92,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.PACKAGE_PAT }}
           registry: docker.pkg.github.com
-          repository: ${{ github.repository_owner }}/brawlerslike-nginx
+          repository: anthonydeniau/brawlerslike-nginx
           tag_with_ref: true
 
   deploy:
