@@ -14,8 +14,8 @@ datasources:
   user: brawler_user
   database: brawler_db
   basicAuth: false
-  basicAuthUser:admin
-  basicAuthPassword:admin
+  basicAuthUser: admin
+  basicAuthPassword: admin
   withCredentials:
   isDefault: true
   jsonData:
