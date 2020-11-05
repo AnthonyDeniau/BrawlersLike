@@ -1,0 +1,39 @@
+name: "Build & Push Image"
+description: "Build & Push image to ghcr.io"
+
+inputs:
+  image-name:
+    description: "Use for tag"
+    required: true
+  dockerfile-path:
+    description: "Path where to find the Dockerfile"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Build image
+      run: docker build ${{ inputs.dockerfile-path }} --tag ${{ inputs.image-name }}
+      shell: bash
+
+    - name: Push image to GitHub Container Registry
+      run: |
+        IMAGE_ID=ghcr.io/${{ github.repository_owner }}/${{ inputs.image-name }}
+
+        # Change all uppercase to lowercase
+        IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+
+        # Strip git ref prefix from version
+        VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+
+        # Strip "v" prefix from tag name
+        [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+
+        # Use Docker `latest` tag convention
+        [ "$VERSION" == "master" ] && VERSION=latest
+
+        echo IMAGE_ID=$IMAGE_ID
+        echo VERSION=$VERSION
+
+        docker tag ${{ inputs.image-name }} $IMAGE_ID:$VERSION
+        docker push $IMAGE_ID:$VERSION

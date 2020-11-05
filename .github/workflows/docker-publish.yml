@@ -43,34 +43,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build image
-        run: docker build backend --tag $IMAGE_NAME
-
       - name: Log into GitHub Container Registry
         # TODO: Create a PAT with `read:packages` and `write:packages` scopes and save it as an Actions secret `CR_PAT`
         run: echo "${{ secrets.PACKAGE_PAT }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
+      - id: backend
+        uses: ./.github/actions/docker-build-push
+        with:
+          image-name: brawlerlike/backend
+          dockerfile-path: ./backend/
+      - id: nginx
+        uses: ./.github/actions/docker-build-push
+        with:
+          image-name: brawlerlike/nginx
+          dockerfile-path: ./docker/nginx/
 
-      - name: Push image to GitHub Container Registry
-        run: |
-          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
-
-          # Change all uppercase to lowercase
-          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
-
-          # Strip git ref prefix from version
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-
-          # Strip "v" prefix from tag name
-          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-
-          # Use Docker `latest` tag convention
-          [ "$VERSION" == "master" ] && VERSION=latest
-
-          echo IMAGE_ID=$IMAGE_ID
-          echo VERSION=$VERSION
-
-          docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
-          docker push $IMAGE_ID:$VERSION
   deploy:
     needs: push
     runs-on: ubuntu-latest
@@ -79,9 +65,9 @@ jobs:
       - name: copy new docker-compose.prod.yml & envprod to remote server
         run: |
           sshpass -p ${{secrets.OVH_1_PASSWORD}} -v scp -o "StrictHostKeyChecking no" ./docker-compose.prod.yml ${{secrets.OVH_1_USER}}@${{secrets.OVH_1_IP}}:./docker-compose.yml
-          sshpass -p ${{secrets.OVH_1_PASSWORD}} -v scp -o "StrictHostKeyChecking no" ./envprod ${{secrets.OVH_1_USER}}@${{secrets.OVH_1_IP}}:./envprod.yml
+          sshpass -p ${{secrets.OVH_1_PASSWORD}} -v scp -o "StrictHostKeyChecking no" ./envprod ${{secrets.OVH_1_USER}}@${{secrets.OVH_1_IP}}:./envprod
           sshpass -p ${{secrets.OVH_1_PASSWORD}} -v ssh -o "StrictHostKeyChecking no" ${{secrets.OVH_1_USER}}@${{secrets.OVH_1_IP}} "echo -e '\nDJANGO_SECRET_KEY=${{secrets.DJANGO_SECRET_KEY}}' >> ./envprod" 
-          sshpass -p ${{secrets.OVH_1_PASSWORD}} -v ssh -o "StrictHostKeyChecking no" ${{secrets.OVH_1_USER}}@${{secrets.OVH_1_IP}} "echo -e '\nPOSTGRES_PASSWORD=${{secrets.POSTGRES_PASSWORD}}' >> ./envprod"
+          sshpass -p ${{secrets.OVH_1_PASSWORD}} -v ssh -o "StrictHostKeyChecking no" ${{secrets.OVH_1_USER}}@${{secrets.OVH_1_IP}} "echo -e 'POSTGRES_PASSWORD=${{secrets.POSTGRES_PASSWORD}}' >> ./envprod"
       - name: restart docker compose
         run: |
           sshpass -p ${{secrets.OVH_1_PASSWORD}} -v ssh -o "StrictHostKeyChecking no" ${{secrets.OVH_1_USER}}@${{secrets.OVH_1_IP}} "docker-compose pull && docker-compose up -d"

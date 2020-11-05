@@ -8,7 +8,7 @@ services:
       - pg_data:/var/lib/postgresql/data/
       - pg_backups:/pg_backups
     env_file:
-      - ./envtest
+      - ./envprod
     expose:
       - "5432"
   backend:
@@ -23,12 +23,12 @@ services:
       - db
       - redis
     env_file:
-      - ./envtest
+      - ./envprod
     volumes:
       - www:/data/www
 
   nginx:
-    build: ./docker/nginx
+    image: ghcr.io/anthonydeniau/brawlerlike/nginx
     container_name: brawlerlike_nginx_1
     ports:
       - 80:80
