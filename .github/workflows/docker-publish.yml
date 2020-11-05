@@ -76,12 +76,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name : copy new docker-compose.prod.yml & envprod to remote server 
+      - name: copy new docker-compose.prod.yml & envprod to remote server
         run: |
-        sshpass -p ${{secrets.OVH_1_PASSWORD}} -v scp -o "StrictHostKeyChecking no" ./docker-compose.prod.yml ${{secrets.OVH_1_USER}}@${{secrets.OVH_1_IP}}:./docker-compose.yml
-        sshpass -p ${{secrets.OVH_1_PASSWORD}} -v scp -o "StrictHostKeyChecking no" ./envprod ${{secrets.OVH_1_USER}}@${{secrets.OVH_1_IP}}:./envprod.yml
-        sshpass -p ${{secrets.OVH_1_PASSWORD}} -v ssh -o "StrictHostKeyChecking no" ${{secrets.OVH_1_USER}}@${{secrets.OVH_1_IP}} "echo -e '\nDJANGO_SECRET_KEY=${{secrets.DJANGO_SECRET_KEY}}' >> ./envprod" 
-        sshpass -p ${{secrets.OVH_1_PASSWORD}} -v ssh -o "StrictHostKeyChecking no" ${{secrets.OVH_1_USER}}@${{secrets.OVH_1_IP}} "echo -e '\nPOSTGRES_PASSWORD=${{secrets.POSTGRES_PASSWORD}}' >> ./envprod" 
+          sshpass -p ${{secrets.OVH_1_PASSWORD}} -v scp -o "StrictHostKeyChecking no" ./docker-compose.prod.yml ${{secrets.OVH_1_USER}}@${{secrets.OVH_1_IP}}:./docker-compose.yml
+          sshpass -p ${{secrets.OVH_1_PASSWORD}} -v scp -o "StrictHostKeyChecking no" ./envprod ${{secrets.OVH_1_USER}}@${{secrets.OVH_1_IP}}:./envprod.yml
+          sshpass -p ${{secrets.OVH_1_PASSWORD}} -v ssh -o "StrictHostKeyChecking no" ${{secrets.OVH_1_USER}}@${{secrets.OVH_1_IP}} "echo -e '\nDJANGO_SECRET_KEY=${{secrets.DJANGO_SECRET_KEY}}' >> ./envprod" 
+          sshpass -p ${{secrets.OVH_1_PASSWORD}} -v ssh -o "StrictHostKeyChecking no" ${{secrets.OVH_1_USER}}@${{secrets.OVH_1_IP}} "echo -e '\nPOSTGRES_PASSWORD=${{secrets.POSTGRES_PASSWORD}}' >> ./envprod"
       - name: restart docker compose
         run: |
-        sshpass -p ${{secrets.OVH_1_PASSWORD}} -v ssh -o "StrictHostKeyChecking no" ${{secrets.OVH_1_USER}}@${{secrets.OVH_1_IP}} "docker-compose pull && docker-compose up -d"
+          sshpass -p ${{secrets.OVH_1_PASSWORD}} -v ssh -o "StrictHostKeyChecking no" ${{secrets.OVH_1_USER}}@${{secrets.OVH_1_IP}} "docker-compose pull && docker-compose up -d"
