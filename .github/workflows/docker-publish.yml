@@ -98,7 +98,7 @@ jobs:
           sshpass -p "${{ secrets.OVH_1_PASSWORD }}" ssh -o "StrictHostKeyChecking no" "${{ secrets.OVH_1_USER }}"@"${{ secrets.OVH_1_IP }}" 'ls -la /tmp'
           sshpass -p "${{ secrets.OVH_1_PASSWORD }}" scp -o "StrictHostKeyChecking no" ./envprod "${{ secrets.OVH_1_USER }}"@"${{ secrets.OVH_1_IP }}":/tmp
           sshpass -p "${{ secrets.OVH_1_PASSWORD }}" scp -o "StrictHostKeyChecking no" ./docker-compose.prod.yml "${{ secrets.OVH_1_USER }}"@"${{ secrets.OVH_1_IP }}":/tmp
-          sshpass -p "${{ secrets.OVH_1_PASSWORD }}" scp -o "StrictHostKeyChecking no" -R ./docker "${{ secrets.OVH_1_USER }}"@"${{ secrets.OVH_1_IP }}":/tmp
+          sshpass -p "${{ secrets.OVH_1_PASSWORD }}" scp -o "StrictHostKeyChecking no" -r ./docker "${{ secrets.OVH_1_USER }}"@"${{ secrets.OVH_1_IP }}":/tmp
           sshpass -p "${{ secrets.OVH_1_PASSWORD }}" ssh -o "StrictHostKeyChecking no" "${{ secrets.OVH_1_USER }}"@"${{ secrets.OVH_1_IP }}" 'docker-compose --file /tmp/docker-compose.prod.yml up'
           
 
