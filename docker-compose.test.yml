@@ -14,9 +14,6 @@ services:
   backend:
     build: ./backend
     container_name: brawlerlike_backend_1
-    entrypoint:
-      - /bin/sh
-      - ./entrypoint.sh
     expose:
       - "8000"
     depends_on:
