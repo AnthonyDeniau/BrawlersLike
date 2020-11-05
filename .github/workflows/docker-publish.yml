@@ -85,15 +85,15 @@ jobs:
     steps:
       - name: Install packages
         run: |
-        sshpass -e ssh -o StrictHostKeyChecking=no ${{ secrets.OVH_2_USER }}@${{ secrets.OVH_2_IP }} 'sudo dnf install git -y'
+          sshpass -e ssh -o StrictHostKeyChecking=no ${{ secrets.OVH_2_USER }}@${{ secrets.OVH_2_IP }} 'sudo dnf install git -y'
 
       - name: Clone repo
         run: |
-        sshpass -e ssh -o StrictHostKeyChecking=no ${{ secrets.OVH_2_USER }}@${{ secrets.OVH_2_IP }} 'rm -rf /tmp/BrawlersLike && git clone https://github.com/AnthonyDeniau/BrawlersLike.git /tmp/BrawlersLike'
+          sshpass -e ssh -o StrictHostKeyChecking=no ${{ secrets.OVH_2_USER }}@${{ secrets.OVH_2_IP }} 'rm -rf /tmp/BrawlersLike && git clone https://github.com/AnthonyDeniau/BrawlersLike.git /tmp/BrawlersLike'
       
       - name: Docker login
         run: |
-        sshpass -e ssh -o StrictHostKeyChecking=no ${{ secrets.OVH_2_USER }}@${{ secrets.OVH_2_IP }} 'echo "${{ secrets.PACKAGE_PAT }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin'
+          sshpass -e ssh -o StrictHostKeyChecking=no ${{ secrets.OVH_2_USER }}@${{ secrets.OVH_2_IP }} 'echo "${{ secrets.PACKAGE_PAT }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin'
 
       - name: Docker compose pull && up
         run: |
